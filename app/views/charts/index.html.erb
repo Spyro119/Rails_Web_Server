@@ -1,0 +1,12 @@
+<h1>Charts</h1>
+<%# The number of unique requests (ContactId) grouped by Month (Creation Date) %>
+<%# <h4>By Month</h4>
+<%= column_chart charts_by_month_leads_path %>
+
+<%# The number of unique requests (QuoteId) grouped by Month (Creation Date) %>
+<h4>By Month</h4>
+<%= column_chart charts_by_month_qoutes_path %>
+
+<%# The number of elevators (ElevatorId) contained in the buildings belonging to each customer %>
+<%# <h4>By Customer</h4>
+<%= column_chart charts_by_customer_elevators_path %>

@@ -1,0 +1,25 @@
+<input type="submit" onclick="myFunction()" value="Click here to update the audio!">
+<Br><br><br>
+<p> First audio </p>
+<audio controls>
+    <%# <source src=/texttospeech/create type="audio/wav"> %>
+    <source src="/real.wav" type="audio/wav">    
+</audio>
+
+
+
+
+
+<script>
+
+		function myFunction() {
+            console.log("audio est updater!")
+            $.ajax({
+                type: "POST",
+                url: "/root",
+                processData: false
+            })
+
+                }
+                
+</script>

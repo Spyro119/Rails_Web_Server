@@ -1,165 +1,83 @@
-<html>
+<%# <html>
 <body class="smoothscroll enable-animation">
 	
 
 		<!-- Parallax -->
-		<section class="parallax h-150 pt-40 pb-40" style="background-image: url('/assets/12-min.jpg');">
+		<section class="parallax h-150 pt-40 pb-40">
 			<div class="overlay dark-5">
-				<!-- dark overlay [1 to 9 opacity] -->
 			</div>
 
 		<div class="container">
 			<div class="text-center">
-				<br><h2 class="fs-40 fw-100">SUBMISSION FORM</h2>
+				<br><h2 class="fs-40 fw-100">Intervention Tickets</h2>
 			</div>
 		</div>
 		</section>
+		<script>
+
+		function show_row_2(){
+		// // var val = document.getElementById('customer_company_contact_full_name').value;
+		// var val2 = document.getElementById('building').value;
+
+		
+		// document.getElementById('Other_selection').style.display = val2 != "" ? 'block' : 'none';
+        // // // $('.container').val('');
+		// // console.log('this.value ', val);
+		// console.log('this value = ', val2);
+
+		// // if val != "" {
+			
+		// // }
+
+$('#customer_company_contact_full_name').change(function(){
+	  var val = $(this).val();
+	  document.getElementById('Lead_selection').style.display = val != "" ? 'block' : 'none';
+	// val = document.getElementById('customer_company_contact_full_name').value;
+	console.log('triggered');
+	console.log(val);
+building = Building.find_by_customer_id(customer.id)
+
+
+	      	$("#building").append('<option>Select building</option>');
+	      	for(var i = 0; i < building.length; i++){
+	      		$("#building").append('<option value="' + building[i]["id"] + '">' + building[i]["id"] + '</option>');
+	      	}
+		})
+		}
+	
+</script>
 
 	<!-- SUBMISSION FORM -->
-		<section class="p-20" style="background-image: url('/assets/12-min.jpg');">
+		<section class="p-20">
 			<div class="container" style="color: rgb(0, 0, 0)">
 				<!--FIRST SECTION-->
-				<!--Specify the building type, ONE OPTION ONLY-->
-				<form action="/quotes" method="post">
+				<!-- ONE OPTION ONLY-->
+				<form action="/facts" method="post">
 					<div class="row">
-						<div class="col-sm-6 col-md-8">
-							<p> <strong>First, please select the type of your building in the list below</strong> </p>
-							<label for="building_type">Building type</label>
-							<select id="mySelect" name="building_type" class="fs-18 h-50">
-								<option value="select"></option><br>
-								<option value="residental">Residental</option>
-								<option value="commercial">Commercial</option>
-								<option value="corporate">Corporate</option>
-								<option value="hybrid">Hybrid</option>
-
+						<div class="col-sm-6 col-md-8", id ="Customer", onchange="show_row_2()">
+							<p> <strong>Create an intervention ticket</strong> </p>
+							<label id="facts", for="fact_customers" >Customer's name</label>
+							<%= select("customer", "company_contact_full_name", Customer.all.collect { |c| [ c.company_contact_full_name, c.id ]}, { prompt: 'Select customer' }) %>
 							</select><br><br><br>
+							
 
-						</div>
-
-						<br><div class="col-sm-6 col-md-8"><br>
-						Enter your email
-							<input id="userEmail" type="email" name="userEmail" value="" oninput="Call()">
-						</div>
-						<br>
-						<br>
-						<br>
 						
-						<!--BUILDING TYPES-->
-						<div class="col-sm-6 col-md-12">
-							<div id="residental" class="building_type">
-								Enter the number of apartments
-								<input id="NbrApartment" type="number" name="NbrApartment" value="" oninput="Call()"
-									onkeyup="Call()"><br><br>
-								Enter the number of floor
-								<input id="NbrFloorResidential" type="number" name="NbrFloorResidential" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of basements
-								<input id="NbrBasementResidential" type="number" name="NbrBasementResidential" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-							</div>
+						
+						<br><div id="Lead_selection" class="col-sm-6 col-md-8", style="display: none"><br>
+						Customer's building: 
+						<%= select("building", "id", Building.all.collect { |b| [b.id, b.id ]}, { prompt: 'Choose building' }) %>	
 						</div>
-
-						<div class="col-sm-6 col-md-12">
-							<div id="commercial" class="building_type">
-								Enter the number of separate businesses
-								<input id="NbrSeparateBusinessCommercial" type="number"
-									name="NbrSeparateBusinessCommercial" value="" oninput="Call()"
-									onkeyup="Call()"><br><br>
-								Enter the number of floor
-								<input id="NbrFloorCommercial" type="number" name="NbrFloorCommercial" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of basements
-								<input id="NbrBasementCommercial" type="number" name="NbrBasementCommercial" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of parking spots available
-								<input id="NbrParkingCommercial" type="number" name="NbrParkingCommercial" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of lift cages to deploy
-								<input id="NbrElevatorCage" type="number" name="NbrElevatorCage" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-							</div>
+						<br>
+						<br>
+						<br>
+						<br><div id="Other_selection" class="col-sm-6 col-md-8", style="display: none"><br>
+						Customer's building: 
+						<%= select_tag "hum", options_from_collection_for_select(Lead.find_by_customer_id(Customer.ids), "id", "lead_company_name"), { prompt: 'Choose building'}	 %>
 						</div>
-
-						<div class="col-sm-6 col-md-12">
-							<div id="corporate" class="building_type">
-								Enter the number of separate rental companies
-								<input id="NbrTenant" type="number" name="NbrTenant" value="" oninput="Call()"
-									onkeyup="Call()"><br><br>
-								Enter the number of floor
-								<input id="NbrFloorCorporate" type="number" name="NbrFloorCorporate" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of basements
-								<input id="NbrBasementCorporate" type="number" name="NbrBasementCorporate" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of parking spots available
-								<input id="NbrParkingCorporate" type="number" name="NbrParkingCorporate" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of occupants per floor
-								<input id="NbrMaxOccupantCorporate" type="number" name="NbrMaxOccupantCorporate"
-									value="" input="Call()" onkeyup="Call()"><br><br>
-							</div>
 						</div>
+						
+	
 
-						<div class="col-sm-6 col-md-12">
-							<div id="hybrid" class="building_type">
-								Enter the number of separate businesses
-								<input id="NbrSeparateBusinessHybrid" type="number" name="NbrSeparateBusinessHybrid"
-									value="" oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of floor
-								<input id="NbrFloorHybrid" type="number" name="NbrFloorHybrid" value="" oninput="Call()"
-									onkeyup="Call()"><br><br>
-								Enter the number of basements
-								<input id="NbrBasementHybrid" type="number" name="NbrBasementHybrid" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of parking spots available
-								<input id="NbrParkingHybrid" type="number" name="NbrParkingHybrid" value=""
-									oninput="Call()" onkeyup="Call()"><br><br>
-								Enter the number of occupants per floor
-								<input id="NbrMaxOccupantHybrid" type="number" name="NbrMaxOccupantHybrid" value=""
-									input="Call()" onkeyup="Call()"><br><br>
-								Enter the number of hours of activity of the building
-								<input id="NbrActivityHour" type="number" name="NbrActivityHour" value="" input="Call()"
-									onkeyup="Call()"><br><br>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-12">
-							<br><p>Number of elevators you need: <input id="ResultElevator" type="number"
-									name="ResultElevator" value=""></p><br>
-						</div>
-					</div>
-					<!-- /BUILDING TYPES-->
-					<!-- /FIRST SECTION-->
-
-					<!-- SECOND SECTION-->
-					<!--Specify the quality of elevator-->
-					<div class="row">
-						<div class="col-sm-6 col-md-6">
-							<p><strong>Second, please chose the quality of elevator below</strong></p>
-							<div>
-								<input id="PriceUnitStandard" type="radio" name="services" value="standard"
-									onchange="Price()"> Standard<br>
-								<input id="PriceUnitPremium" type="radio" name="services" value="premium"
-									onchange="Price()"> Premium<br>
-								<input id="PriceUnitExcelium" type="radio" name="services" value="excelium"
-									onchange="Price()"> Excelium<br><br>
-
-								<br>Price of an elevators: <input id="PriceUnit" name="PriceUnit" type="float">$<br>
-								<br>Installation of an elevator: <input id="InstallationCost" name="InstallationCost"
-									type="float">$<br>
-								<br>Total cost: <input id="TotalCost" name="TotalCost" type="float">$<br>
-							</div>
-							<input type="submit" onclick="myFunction()" name="Ajouter a la quote list">
-							<script>
-									function myFunction() {
-  										alert("Your submission have been save! Log in if you want to check it again!");
-									}
-							</script>
-						</div>
-					</div>		
-				</form>
-			</div>
-		<!-- /SECOND SECTION-->
 		</section>
 	<!-- /SUBMISSION FORM -->
 
@@ -235,4 +153,4 @@
 		</div><!-- /PRELOADER -->
 
 	</body>
-</html>
+</html> %>

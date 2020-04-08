@@ -20,6 +20,7 @@
 //= require view/demo.revolution_slider
 //= require contact
 //= require SubmissionForm
+//= require Form_intervention
 //= require chartkick
 //= require Chart.bundle
 

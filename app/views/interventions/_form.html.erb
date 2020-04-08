@@ -1,0 +1,160 @@
+<%= form_with(model: intervention, local: true) do |f| %>
+
+  <% if intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <html>
+<body class="smoothscroll enable-animation">
+	
+
+		<!-- Parallax -->
+		<%# <section class="parallax h-150 pt-40 pb-40">
+			<div class="overlay dark-5">
+			</div>
+
+		<div class="container">
+			<div class="text-center">
+				<br><h2 class="fs-40 fw-100">Intervention Tickets</h2>
+			</div>
+		</div>
+		</section> %>
+
+
+	<!-- SUBMISSION FORM -->
+		<section class="p-20">
+			<div class="container" style="color: rgb(0, 0, 0)">
+				<!--FIRST SECTION-->
+				<!-- ONE OPTION ONLY-->
+				<form action="/interventions" method="post">
+					<div class="row">
+						<div class="col-sm-6 col-md-8", id ="Customer", onchange="show_row_2()">
+							<p> <strong>Create an intervention ticket</strong> </p>
+							<label id="intervention_ticket", for="customer_intervention" >Customer's name:</label>
+							<%= f.select(:customer_id, @customers.collect { |c| [ c.company_contact_full_name, c.id ]}, { prompt: 'Select customer' }) %>
+						
+            <div id="building" class="col-sm-6 col-md-8", style="display: none">
+						<p> <label id="intervention_ticket", for="customer_intervention"> Customer's building: </label> </p>
+						<%= f.select(:building_id,  ["Choose building", value="NULL"]) %>	
+						</div> <br>
+
+            <div id="battery" class="col-sm-6 col-md-8", style="display: none">
+						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Battery: </label> </p>
+					  <%= f.select(:battery_id,  ["Choose Battery", value= "NULL" ]) %>	
+						</div>  <br>
+
+            <div id="column" class="col-sm-6 col-md-8", style="display: none">
+						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Column: </label> </p>
+					  <%= f.select(:column_id, ["Choose Column", value= "NULL" ]) %>	
+						</div> <br> 
+
+            <div id="elevator" class="col-sm-6 col-md-8", style="display: none">
+						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Elevator: </label> </p>
+					  <%= f.select(:elevator_id, ["Choose Elevator", value= "NULL"]) %>	
+						</div> <br> 
+
+            <div id="employee" class="col-sm-6 col-md-8">
+						 <p> <label id="intervention_ticket", for="customer_intervention"> Designed Employee: </label> </p>
+					  <%= f.select(:employee_id, Employee.all.collect { |e| [e.firstname + " " + e.lastname, e.id ]}, { prompt: 'None' }) %>	
+						</div> <br> 
+
+            <p><label>Description: </label></p>
+            <%= f.text_area :report %>
+            <%# <div style="display:none"> %>
+            <label style="hidden"> test </label>
+            <%= f.select(:author, [current_employee.id]) %>
+            <%# </div> %>
+					</div>
+        </select> 
+    	</section>
+      <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+
+	<!-- /SUBMISSION FORM -->
+
+
+	            <!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-6">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+							We are the best on the market, based on our customer feedback!
+							</p>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-6">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+						</div>				
+						<!-- /col #2 -->
+					</div>
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Rocket Elevators @2020
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+
+		<!-- PRELOADER -->
+		<div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div><!-- /PRELOADER -->
+
+	</body>
+</html>
+
+
+

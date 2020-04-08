@@ -1,5 +1,12 @@
 module RailsAdmin
     module Config
+
+      RailsAdmin.config do |config|
+        config.current_user_method do
+          current_admin
+        end
+      end
+      
       module Actions
 
         class Customaction < RailsAdmin::Config::Actions::Base

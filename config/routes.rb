@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+  # resources :interventions
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Blazer::Engine, at: 'blazer'
 
@@ -33,8 +34,15 @@ Rails.application.routes.draw do
     get "by-month-quotes"
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :interventions do 
+    get :get_building, on: :collection
+    get :get_battery, on: :collection
+    get :get_column, on: :collection
+    get :get_elevator, on: :collection
+  end
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   root "pages#index_one_page_elevator"
   
   get "pages/index_one_page_elevator"
@@ -42,7 +50,7 @@ Rails.application.routes.draw do
   get "pages/corporate_services"
   get "pages/SubmissionForm"
   get "pages/login"
-  get "pages/FactForm"
+  get "pages/FactForm" => "interventions#new"
   post "quotes" => "quotes#create"
   post "leads" => "leads#create"
 

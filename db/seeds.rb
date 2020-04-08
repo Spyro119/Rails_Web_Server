@@ -92,7 +92,7 @@ leads = Lead.take(20)
         WorkingHours: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
         user_id:users[index].id,
         email: Faker::Internet.email,
-        lead_id:leads[l].id
+        leads_id:leads[l].id
     )
     x+=1
     quote.save!

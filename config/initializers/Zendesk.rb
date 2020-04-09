@@ -4,7 +4,7 @@ def create_ticket(user_name, company_name, email, phone_number, department, proj
 @client = ZendeskAPI::Client.new do |config|
   # Mandatory:
 
-  config.url = "https://team2support.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+  config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
 
   # Basic / Token Authentication
   config.username = ENV["Zendesk_email"]
@@ -60,7 +60,7 @@ end
 
   def create_quote_ticket(quote_id, email, service_type, elevNum, price)
     @client = ZendeskAPI::Client.new do |config|
-      config.url = "https://team2support.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+      config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
       config.username = ENV["Zendesk_email"]
       config.password = ENV["Zendesk_password"]
       config.retry = true
@@ -80,5 +80,27 @@ end
        
       
 end
+
+def create_intervention_ticket(intervention, customer, customer_company, building, battery, column, elevator, employee_name, requester)
+  @client = ZendeskAPI::Client.new do |config|
+    config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+    config.username = ENV["Zendesk_email"]
+    config.password = ENV["Zendesk_password"]
+    config.retry = true
+    config.raise_error_when_rate_limited = false
+    require 'logger'
+    config.logger = Logger.new(STDOUT)
+  end 
+  
+  ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+  ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+    :comment => { :value =>" 
+      Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
+      his battery # #{battery}, column # #{column}, elevator # #{elevator}. #{employee_name} has been affected to this ticket."},
+      :priority => "normal",
+      :type => 'problem',
+      requester: {"name": requester}) 
+    end
+    
   # create_quote_ticket(140, "support@rocketelevators.com", "Commercial", "2", "13 000")
   # create_ticket("Samuel", "Rocket &Co", "SamuelJubinville119@gmail.com", "4388221756", "Commercial", "Genesis", "Project 1", "Hello world")

@@ -1,7 +1,7 @@
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_employee!
-  before_action :authorize_admin, only: 
+  before_action :authorize_admin, only:
  
 
   # GET /interventions
@@ -18,12 +18,6 @@ class InterventionsController < ApplicationController
   # GET /interventions/new
   def new
     @intervention = Intervention.new
-    @customers = Customer.all
-    @employees = Employee.all
-    @buildings = Building.all
-    @customer = Customer.first
-
-     @building = Building.find_by customer_id: @customer.id
   end
 
   def get_building
@@ -98,11 +92,18 @@ class InterventionsController < ApplicationController
   # POST /interventions.json
   def create
     @intervention = Intervention.new(intervention_create_params)
+    val = @intervention.customer_id 
+    @client = Customer.find(val)
+    employee_id = @intervention.employee_id
+    @employee = Employee.find(employee_id)
 
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
+
+    create_intervention_ticket(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, @employee.firstname + " " + @employee.lastname, current_employee.firstname + " " + current_employee.lastname)
+
       else
         format.html { render :new }
         format.json { render json: @intervention.errors, status: :unprocessable_entity }

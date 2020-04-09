@@ -16,7 +16,7 @@
 	
 
 		<!-- Parallax -->
-		<%# <section class="parallax h-150 pt-40 pb-40">
+		<section class="parallax h-150 pt-40 pb-40" >
 			<div class="overlay dark-5">
 			</div>
 
@@ -25,20 +25,23 @@
 				<br><h2 class="fs-40 fw-100">Intervention Tickets</h2>
 			</div>
 		</div>
-		</section> %>
+		</section>
 
 
-	<!-- SUBMISSION FORM -->
+	<!-- FORM -->
 		<section class="p-20">
 			<div class="container" style="color: rgb(0, 0, 0)">
 				<!--FIRST SECTION-->
 				<!-- ONE OPTION ONLY-->
+				<br>
+				<br>
+				<br>
 				<form action="/interventions" method="post">
 					<div class="row">
 						<div class="col-sm-6 col-md-8", id ="Customer", onchange="show_row_2()">
 							<p> <strong>Create an intervention ticket</strong> </p>
 							<label id="intervention_ticket", for="customer_intervention" >Customer's name:</label>
-							<%= f.select(:customer_id, @customers.collect { |c| [ c.company_contact_full_name, c.id ]}, { :include_blank => 'Select customer' }, :required => true) %>
+							<%= f.select(:customer_id, Customer.all.collect { |c| [ c.company_contact_full_name, c.id ]}, { :include_blank => 'Select customer' }, :required => true) %>
 						
             <div id="building" class="col-sm-6 col-md-8", style="display: none">
 						<p> <label id="intervention_ticket", for="customer_intervention"> Customer's building: </label> </p>
@@ -86,7 +89,7 @@
           </div>
         <% end %>
 
-	<!-- /SUBMISSION FORM -->
+	<!-- /FORM -->
 
 
 	            <!-- FOOTER -->

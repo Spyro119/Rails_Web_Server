@@ -38,39 +38,46 @@
 						<div class="col-sm-6 col-md-8", id ="Customer", onchange="show_row_2()">
 							<p> <strong>Create an intervention ticket</strong> </p>
 							<label id="intervention_ticket", for="customer_intervention" >Customer's name:</label>
-							<%= f.select(:customer_id, @customers.collect { |c| [ c.company_contact_full_name, c.id ]}, { prompt: 'Select customer' }) %>
+							<%= f.select(:customer_id, @customers.collect { |c| [ c.company_contact_full_name, c.id ]}, { :include_blank => 'Select customer' }, :required => true) %>
 						
             <div id="building" class="col-sm-6 col-md-8", style="display: none">
 						<p> <label id="intervention_ticket", for="customer_intervention"> Customer's building: </label> </p>
-						<%= f.select(:building_id,  ["Choose building", value="NULL"]) %>	
+						<%= f.select(:building_id, { :include_blank => 'Select building' }, :required => true) %>	
 						</div> <br>
 
             <div id="battery" class="col-sm-6 col-md-8", style="display: none">
 						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Battery: </label> </p>
-					  <%= f.select(:battery_id,  ["Choose Battery", value= "NULL" ]) %>	
+					  <%= f.select(:battery_id,  ["Choose Battery" ]) %>	
 						</div>  <br>
 
             <div id="column" class="col-sm-6 col-md-8", style="display: none">
 						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Column: </label> </p>
-					  <%= f.select(:column_id, ["Choose Column", value= "NULL" ]) %>	
+					  <%= f.select(:column_id, ["Choose Column"]) %>	
 						</div> <br> 
 
             <div id="elevator" class="col-sm-6 col-md-8", style="display: none">
 						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Elevator: </label> </p>
-					  <%= f.select(:elevator_id, ["Choose Elevator", value= "NULL"]) %>	
+					  <%= f.select(:elevator_id, ["Choose Elevator"]) %>	
 						</div> <br> 
 
             <div id="employee" class="col-sm-6 col-md-8">
 						 <p> <label id="intervention_ticket", for="customer_intervention"> Designed Employee: </label> </p>
-					  <%= f.select(:employee_id, Employee.all.collect { |e| [e.firstname + " " + e.lastname, e.id ]}, { prompt: 'None' }) %>	
+					  <%= f.select(:employee_id, Employee.all.collect { |e| [e.firstname + " " + e.lastname, e.id ]}, { :include_blank => 'None' }) %>	
 						</div> <br> 
 
             <p><label>Description: </label></p>
             <%= f.text_area :report %>
             <%# <div style="display:none"> %>
-            <label style="hidden"> test </label>
+			<div style="display: none">
+            <label> test </label>
             <%= f.select(:author, [current_employee.id]) %>
-            <%# </div> %>
+			</div>
+			<div style="display: none">
+			<%= f.select(:result, ['incomplete'])%>
+			</div>
+			<div style="display: none">
+			<%= f.select(:status, ['pending'])%>
+            </div>
 					</div>
         </select> 
     	</section>

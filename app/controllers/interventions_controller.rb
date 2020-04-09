@@ -2,7 +2,7 @@ class InterventionsController < ApplicationController
   before_action :set_intervention, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_employee!
   before_action :authorize_admin, only: 
-
+ 
 
   # GET /interventions
   # GET /interventions.json
@@ -111,7 +111,7 @@ class InterventionsController < ApplicationController
   end
 
   def intervention_create_params
-    params.require(:intervention).permit(:author, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :report)
+    params.require(:intervention).permit(:author, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :report, :result, :status)
   end
 
   # PATCH/PUT /interventions/1

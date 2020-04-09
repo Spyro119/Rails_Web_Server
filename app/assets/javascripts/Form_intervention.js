@@ -30,7 +30,10 @@ success: function (response) {
 $('#intervention_building_id').click(function(){
 var val2 = $(this).val();
 
-console.log("2nd dropdown value = " + val2);
+// console.log("2nd dropdown value = " + val2);
+
+$("#intervention_column_id").empty();
+$("#intervention_elevator_id").empty();
 
 $.ajax({
  url: '/interventions/get_battery?',
@@ -44,12 +47,10 @@ success: function (response) {
   console.log(response);
   var battery = response["battery"];
   document.getElementById('battery').style.display = val2 != "" ? 'block' : 'none';
-  document.getElementById('column').style.display = val2 != "" ? 'block' : 'none';
-  document.getElementById('elevator').style.display = val2 != "" ? 'block' : 'none';
 
   $("#intervention_battery_id").empty();
 
-  $("#intervention_battery_id").append('<option value = "">Select Battery</option>');
+  $("#intervention_battery_id").append('<option required disabled value = "">Select Battery</option>');
   for(var i = 0; i < battery.length; i++){
     $("#intervention_battery_id").append('<option value="' + battery[i]["id"] + '">' + "Battery #" +battery[i]["id"] + '</option>');
   }
@@ -73,6 +74,8 @@ $('#intervention_battery_id').click(function(){
   success: function (response) {
     console.log(response);
     var column = response["column"];
+    document.getElementById('column').style.display = val3 != "" ? 'block' : 'none';
+
     $("#intervention_column_id").empty();
   
     $("#intervention_column_id").append('<option value="">None</option>');
@@ -99,6 +102,8 @@ $('#intervention_battery_id').click(function(){
     success: function (response) {
       console.log(response);
       var elevator = response["elevator"];
+    document.getElementById('elevator').style.display = val4 != "" ? 'block' : 'none';
+
       $("#intervention_elevator_id").empty();
     
       $("#intervention_elevator_id").append('<option value="">None</option>');

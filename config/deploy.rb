@@ -4,7 +4,7 @@ lock "~> 3.12.0"
 before 'deploy', 'rvm1:install:ruby'
 set :rvm_map_bins, [ 'rake', 'gem', 'bundle', 'ruby', 'puma', 'pumactl' ]
 set :application, "SamuelJubinville"
-set :repo_url, "https://github.com/Spyro119/Week_API"
+set :repo_url, "https://github.com/Spyro119/Rails_Web_Server"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

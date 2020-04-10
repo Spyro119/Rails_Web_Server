@@ -1,8 +1,8 @@
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_employee!
-  before_action :authorize_admin, only:
- 
+  before_action :authorize_employee, only:
+
 
   # GET /interventions
   # GET /interventions.json
@@ -94,16 +94,42 @@ class InterventionsController < ApplicationController
     @intervention = Intervention.new(intervention_create_params)
     val = @intervention.customer_id 
     @client = Customer.find(val)
-    employee_id = @intervention.employee_id
-    @employee = Employee.find(employee_id)
+
+    if @intervention.employee_id? 
+      employee_id = @intervention.employee_id
+      @employee = Employee.find(employee_id)
+    end
 
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
-
-    create_intervention_ticket(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, @employee.firstname + " " + @employee.lastname, current_employee.firstname + " " + current_employee.lastname)
-
+        
+        if @intervention.employee_id? && @intervention.elevator_id?
+          create_intervention_ticket(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+        
+        elsif @intervention.employee_id? && @intervention.column_id?
+          create_ticket2(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+        
+        elsif @intervention.employee_id? && @intervention.battery_id? 
+          create_ticket3(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+       
+        elsif @intervention.employee_id?
+          create_ticket4(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+       
+        elsif @intervention.elevator_id?
+          create_ticket5(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, current_employee.firstname + " " + current_employee.lastname)
+       
+        elsif @intervention.column_id? 
+          create_ticket6(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, current_employee.firstname + " " + current_employee.lastname)
+       
+        elsif @intervention.battery_id?
+          create_ticket7(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, current_employee.firstname + " " + current_employee.lastname)
+       
+        else 
+          create_ticket8(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, current_employee.firstname + " " + current_employee.lastname)
+        end
+        
       else
         format.html { render :new }
         format.json { render json: @intervention.errors, status: :unprocessable_entity }

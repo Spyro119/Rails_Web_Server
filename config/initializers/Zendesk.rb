@@ -78,10 +78,10 @@ end
         :type => 'task',
         requester: {"name": email}) 
        
-      
-end
+      end
+    
 
-def create_intervention_ticket(intervention, customer, customer_company, building, battery, column, elevator, employee_name, requester)
+def create_intervention_ticket(intervention, customer, customer_company, building, battery, column, elevator, employee, requester)
   @client = ZendeskAPI::Client.new do |config|
     config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
     config.username = ENV["Zendesk_email"]
@@ -96,11 +96,160 @@ def create_intervention_ticket(intervention, customer, customer_company, buildin
   ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
     :comment => { :value =>" 
       Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
-      his battery # #{battery}, column # #{column}, elevator # #{elevator}. #{employee_name} has been affected to this ticket."},
+      his battery # #{battery}, column # #{column}, elevator # #{elevator}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
       :priority => "normal",
       :type => 'problem',
       requester: {"name": requester}) 
     end
+  
+
+def create_ticket2(intervention, customer, customer_company, building, battery, column, employee, requester)
+  @client = ZendeskAPI::Client.new do |config|
+    config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+    config.username = ENV["Zendesk_email"]
+    config.password = ENV["Zendesk_password"]
+    config.retry = true
+    config.raise_error_when_rate_limited = false
+    require 'logger'
+    config.logger = Logger.new(STDOUT)
+  end 
+  ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+  ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+    :comment => { :value =>" 
+      Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
+      his battery # #{battery}, column # #{column}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
+      :priority => "normal",
+      :type => 'problem',
+      requester: {"name": requester}) 
+    end 
+
+
+def create_ticket3(intervention, customer, customer_company, building, battery, employee, requester)
+  @client = ZendeskAPI::Client.new do |config|
+    config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+    config.username = ENV["Zendesk_email"]
+    config.password = ENV["Zendesk_password"]
+    config.retry = true
+    config.raise_error_when_rate_limited = false
+    require 'logger'
+    config.logger = Logger.new(STDOUT)
+  end 
+  ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+  ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+    :comment => { :value =>" 
+      Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
+      his battery # #{battery}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
+      :priority => "normal",
+      :type => 'problem',
+      requester: {"name": requester}) 
+    end
+
+def create_ticket4(intervention, customer, customer_company, building, employee, requester)
+  @client = ZendeskAPI::Client.new do |config|
+    config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+    config.username = ENV["Zendesk_email"]
+    config.password = ENV["Zendesk_password"]
+    config.retry = true
+    config.raise_error_when_rate_limited = false
+    require 'logger'
+    config.logger = Logger.new(STDOUT)
+  end 
+  ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+  ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+    :comment => { :value =>" 
+      Customer #{customer} request helps for #{customer_company} at his building # #{building}.
+      #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
+      :priority => "normal",
+      :type => 'problem',
+      requester: {"name": requester}) 
+  end
+
+
+
     
+def create_ticket5(intervention, customer, customer_company, building, battery, column, elevator, requester) 
+  @client = ZendeskAPI::Client.new do |config|
+    config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+    config.username = ENV["Zendesk_email"]
+    config.password = ENV["Zendesk_password"]
+    config.retry = true
+    config.raise_error_when_rate_limited = false
+    require 'logger'
+    config.logger = Logger.new(STDOUT)
+  end 
+  ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+    ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+      :comment => { :value =>" 
+        Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
+        his battery # #{battery}, column # #{column}, elevator # #{elevator}. An employee has not yet been attached to this request."},
+        :priority => "normal",
+        :type => 'problem',
+        requester: {"name": requester}) 
+      end
+
+def create_ticket6(intervention, customer, customer_company, building, battery, column, requester)
+      @client = ZendeskAPI::Client.new do |config|
+        config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+        config.username = ENV["Zendesk_email"]
+        config.password = ENV["Zendesk_password"]
+        config.retry = true
+        config.raise_error_when_rate_limited = false
+        require 'logger'
+        config.logger = Logger.new(STDOUT)
+      end 
+    
+      ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+        ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+          :comment => { :value =>" 
+          Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
+          his battery # #{battery}, column # #{column}. An employee has not yet been attached to this request."},
+          :priority => "normal",
+          :type => 'problem',
+          requester: {"name": requester}) 
+      end
+  
+def create_ticket7(intervention, customer, customer_company, building, battery, requester)
+        @client = ZendeskAPI::Client.new do |config|
+          config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+          config.username = ENV["Zendesk_email"]
+          config.password = ENV["Zendesk_password"]
+          config.retry = true
+          config.raise_error_when_rate_limited = false
+          require 'logger'
+          config.logger = Logger.new(STDOUT)
+        end 
+      
+        ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+          ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+            :comment => { :value =>" 
+            Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
+            his battery # #{battery}. An employee has not yet been attached to this request."},
+            :priority => "normal",
+            :type => 'problem',
+            requester: {"name": requester}) 
+        end
+
+def create_ticket8(intervention, customer, customer_company, building, requester)
+          @client = ZendeskAPI::Client.new do |config|
+            config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+            config.username = ENV["Zendesk_email"]
+            config.password = ENV["Zendesk_password"]
+            config.retry = true
+            config.raise_error_when_rate_limited = false
+            require 'logger'
+            config.logger = Logger.new(STDOUT)
+          end 
+    
+          ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
+            ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
+              :comment => { :value =>" 
+              Customer #{customer} request helps for #{customer_company} at his building # #{building}.
+               An employee has not yet been attached to this request."},
+              :priority => "normal",
+              :type => 'problem',
+              requester: {"name": requester}) 
+    end
+
+    # create_ticket2()
   # create_quote_ticket(140, "support@rocketelevators.com", "Commercial", "2", "13 000")
   # create_ticket("Samuel", "Rocket &Co", "SamuelJubinville119@gmail.com", "4388221756", "Commercial", "Genesis", "Project 1", "Hello world")

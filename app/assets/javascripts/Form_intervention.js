@@ -84,6 +84,7 @@ $('#intervention_battery_id').change(function(){
     document.getElementById('column').style.display = val3 != "" ? 'block' : 'none';
 
     $("#intervention_column_id").empty();
+    $('#intervention_column_id').addClass("form-control")
   
     $("#intervention_column_id").append('<option value="">None</option>');
     for(var i = 0; i < column.length; i++){
@@ -112,7 +113,8 @@ $('#intervention_battery_id').change(function(){
     document.getElementById('elevator').style.display = val4 != "" ? 'block' : 'none';
 
       $("#intervention_elevator_id").empty();
-    
+      $('#intervention_elevator_id').addClass("form-control")
+
       $("#intervention_elevator_id").append('<option value="">None</option>');
       for(var i = 0; i < elevator.length; i++){
         $("#intervention_elevator_id").append('<option value="' + elevator[i]["id"] + '">' + "Elevator #" +elevator[i]["id"] + '</option>');

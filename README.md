@@ -1,4 +1,22 @@
 # README
+
+To access interventions ticket creation page, you'll first need to log in as an employee in the login/sign up tab of the header.
+Once signed in, a new tab with a welcome message will appear in the headerr, the intervention ticket creation is right there. If a user happened to find the create ticket page, he will be redirect to the employee sign up -- so unless registered as an employee, there's no way somebody else can access this page. 
+
+To complete the form, you absolutely need to complete at least those 3 fields : Customer's name, customer's building and the description field. 
+Once Customer's name field is complete, building's field will appear with new values (Customer's building(s)), and every time you complete the building field/battery field/column field, the next field will reappear with new option values depending on the previous fields values. 
+
+Uncompleted fields will return "null" to the database table Interventions, as they're allowed to be null and can be either completed later -- if an employee is assigned, for example -- or just leave them null.
+
+Once submit, this will created a Zendesk ticket to rocketelevators6984.zendesk.com with those infos (The message adapts depending on the fields completed) with the ticket type being "problem" and requester being the current employee submitting the form (or author of the ticket). 
+To log onto Zendesk API => 
+Username : samuelJubinville119@gmail.com
+password : rocketelevators
+
+An intervention tab will contain every intervention Ticket (they are filtered on the ticket type "problem" ).
+
+
+===================================================================================================================================
 To run the server, you'll need to get API keys for each of these API and store them in an hidden file created using the figaro gem. 
 Be sure to run Ruby 2.6.3 -- IBM Watson doesn't support the latest Ruby version.
 To get this file (config/application.yml), just run these command in your terminal :"

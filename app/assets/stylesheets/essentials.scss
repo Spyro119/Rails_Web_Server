@@ -4934,13 +4934,14 @@ a.social-icon.social-icon-transparent:hover>i {
 	.btn-fancy-left {
 	    -webkit-border-top-left-radius: 15px!important;
 	    -moz-border-radius-top-left: 15px!important;
-	    border-top-left-radius: 15px!important;
+		border-top-left-radius: 15px!important;
+		position: absolute;
 	}
 
 	.btn-fancy-right {
 	    -webkit-border-bottom-right-radius: 15px!important;
 	    -moz-border-radius-bottom-right: 15px!important;
-	    border-bottom-right-radius: 15px!important;
+		border-bottom-right-radius: 15px!important;
 	}
 
 /* btn flat */

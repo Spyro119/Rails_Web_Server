@@ -30,6 +30,7 @@
 
 	<!-- FORM -->
 		<section class="p-20" style="background-image: url('/assets/login.jpg');">
+		<%# <section class="p-20" style=""> %>
 			<div class="container" style="color: rgb(0, 0, 0)">
 				<!--FIRST SECTION-->
 				<!-- ONE OPTION ONLY-->
@@ -76,15 +77,18 @@
 			</div>
 			<div style="display: none">
 			<%= f.select(:status, ['pending'])%>
-            </div>
+            </div> 
+			<div class="actions"> <br>
+            <%= f.submit class: "btn btn-fancy-left" %>
+          </div>
+		<% end %>
 					</div>
         </select> 
-      <div class="actions">
-            <%= f.submit class: "btn btn-primary" %>
-          </div>
-        <% end %>
 		</section>
+		
+        
 		</form>
+		<%# </section> %>
 
 	<!-- /FORM -->
 
@@ -145,8 +149,7 @@
 			</footer>
 			<!-- /FOOTER -->
 
-		</div>
-		<!-- /wrapper -->
+
 
 
 		<!-- SCROLL TO TOP -->

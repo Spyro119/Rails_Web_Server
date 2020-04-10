@@ -109,11 +109,11 @@
 
 										 <%# <!-- Log in --> %>
                                     <% if employee_signed_in? %>
-										<a href="pages/FactForm.html"> Interventions </a>
+										
 										<li> 
                                         <a class=dropdown-toggle> WELCOME <strong><%= current_employee.firstname  %></strong> </a>
                                         <ul class="dropdown-menu">
-                                        <li class="dropdown"> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown' %> </li>
+										<li class="dropdown"> <%= link_to "Interventions ticket", new_intervention_path %> </li>
                                         <li class="dropdown"> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown'  %> </li>
 										<li> <%= link_to "Admin", rails_admin.dashboard_path, :class => 'navbar-link' %> </li>
 										</ul>

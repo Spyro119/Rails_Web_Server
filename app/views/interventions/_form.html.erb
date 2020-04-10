@@ -22,51 +22,50 @@
 
 		<div class="container" >
 			<div class="text-center">
-				<br><h2 class="fs-40 fw-100">Intervention Tickets</h2>
+				<br><h2 class="fs-40 fw-100">Create intervention ticket</h2>
 			</div>
 		</div>
 		</section>
 
 
 	<!-- FORM -->
-		<section class="p-20" style="background-image: url('cover1.jpg');">
+		<section class="p-20" style="background-image: url('/assets/login.jpg');">
 			<div class="container" style="color: rgb(0, 0, 0)">
 				<!--FIRST SECTION-->
 				<!-- ONE OPTION ONLY-->
 				<form action="/interventions" method="post">
 					<div class="row">
 						<div class="col-sm-6 col-md-8", id ="Customer", onchange="show_row_2()">
-							<p> <strong>Create an intervention ticket</strong> </p>
-							<label id="intervention_ticket", for="customer_intervention" >Customer's name:</label>
-							<%= f.select(:customer_id, Customer.all.collect { |c| [ c.company_contact_full_name, c.id ]}, { :include_blank => 'Select customer', class: 'col-md-12' }, :required => true) %>
-						
-            <div id="building" class="col-sm-6 col-md-8", style="display: none">
-						<p> <label id="intervention_ticket", for="customer_intervention"> Customer's building: </label> </p>
-						<%= f.select(:building_id, { :include_blank => 'Select building' }, {class: 'col-md-12'}, :required => true) %>	
-						</div> <br>
+							<label id="intervention_ticket", for="customer_intervention" >Customer's name*:</label> 
+							<%= f.select(:customer_id, Customer.all.collect { |c| [ c.company_contact_full_name, c.id ]}, { :include_blank => 'Select customer', class: 'col-md-12' }, :required => true,  :class => "form-control") %>
+						<br>
+            <div class="col-sm-6 col-md-8", id="building", style="display: none">
+				<label id="intervention_ticket", for="customer_intervention"> Customer's building*: </label> 
+				<%= f.select(:building_id, { :include_blank => 'Select building' }, :required => true,  :class => "form-control") %>	
+			</div> <br>
 
             <div id="battery" class="col-sm-6 col-md-8", style="display: none">
-						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Battery: </label> </p>
-					  <%= f.select(:battery_id,  ["Choose Battery"], {class: 'col-md-12'}) %>	
+						 <label id="intervention_ticket", for="customer_intervention"> Customer's Battery: </label> 
+					  <%= f.select(:battery_id,  ["Choose Battery"], :class => "form-control") %>	
 						</div>  <br>
 
             <div id="column" class="col-sm-6 col-md-8", style="display: none">
-						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Column: </label> </p>
-					  <%= f.select(:column_id, ["Choose Column"], {class: 'col-md-12'}) %>	
+						 <label id="intervention_ticket", for="customer_intervention"> Customer's Column: </label> 
+					  <%= f.select(:column_id, ["Choose Column"], :class => "form-control") %>	
 						</div> <br> 
 
             <div id="elevator" class="col-sm-6 col-md-8", style="display: none">
-						 <p> <label id="intervention_ticket", for="customer_intervention"> Customer's Elevator: </label> </p>
-					  <%= f.select(:elevator_id, ["Choose Elevator"], {class: 'col-md-12'}) %>	
+						 <label id="intervention_ticket", for="customer_intervention"> Customer's Elevator: </label> 
+					  <%= f.select(:elevator_id, ["Choose Elevator"], :class => "form-control") %>	
 						</div> <br> 
-
+			
             <div id="employee" class="col-sm-6 col-md-8">
-						 <p> <label id="intervention_ticket", for="customer_intervention"> Designed Employee: </label> </p>
-					  <%= f.select(:employee_id, Employee.all.collect { |e| [e.firstname + " " + e.lastname, e.id ]}, { :include_blank => 'None' }) %>	
+						 <label id="intervention_ticket", for="customer_intervention"> Designed Employee: </label> 
+					  <%= f.select(:employee_id, Employee.all.collect { |e| [e.firstname + " " + e.lastname, e.id ]}, { :include_blank => 'None' },  :class => "form-control") %>	
 						</div> <br> 
 
-            <p><label>Description: </label></p>
-            <%= f.text_area :report, :required => true %>
+            <p><label>Description*: </label></p>
+            <%= f.text_area :report, :required => true, :class => "form-control" %>
             <%# <div style="display:none"> %>
 			<div style="display: none">
             <label> test </label>
@@ -82,9 +81,10 @@
         </select> 
     	</section>
       <div class="actions">
-            <%= f.submit %>
+            <%= f.submit class: "btn btn-primary" %>
           </div>
         <% end %>
+		</form>
 
 	<!-- /FORM -->
 

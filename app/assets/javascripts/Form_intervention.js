@@ -19,9 +19,13 @@ success: function (response) {
   var building = response["building"];
   document.getElementById('building').style.display = val != "" ? 'block' : 'none';
   $("#intervention_building_id").empty();
+  $('#intervention_building_id').addClass("form-control")
+  $('#intervention_building_id').prop('required', 'true')
   $("#intervention_column_id").empty();
+  $('#intervention_column_id').addClass("form-control")
   $("#intervention_elevator_id").empty();
-  $("#intervention_building_id").append('<option required value ="">Select Building</option>');
+  $('#intervention_elevator_id').addClass("form-control")
+  $("#intervention_building_id").append('<option value ="">Select Building</option>');
   for(var i = 0; i < building.length; i++){
     $("#intervention_building_id").append('<option value="' + building[i]["id"] + '">' + "Building #" +building[i]["id"] +  '</option>');
   }
@@ -29,7 +33,7 @@ success: function (response) {
 });
 });
 
-$('#intervention_building_id').click(function(){
+$('#intervention_building_id').change(function(){
 var val2 = $(this).val();
 
 // console.log("2nd dropdown value = " + val2);
@@ -50,6 +54,8 @@ success: function (response) {
   document.getElementById('battery').style.display = val2 != "" ? 'block' : 'none';
 
   $("#intervention_battery_id").empty();
+  $('#intervention_battery_id').addClass("form-control")
+
 
   $("#intervention_battery_id").append('<option value = "">Select Battery</option>');
   for(var i = 0; i < battery.length; i++){
@@ -59,7 +65,7 @@ success: function (response) {
 });
 });
 
-$('#intervention_battery_id').click(function(){
+$('#intervention_battery_id').change(function(){
   var val3 = $(this).val();
   
   console.log("3rd dropdown value = " + val3);
@@ -87,7 +93,7 @@ $('#intervention_battery_id').click(function(){
   });
   });
 
-  $('#intervention_column_id').click(function(){
+  $('#intervention_column_id').change(function(){
     var val4 = $(this).val();
     
     console.log("3rd dropdown value = " + val4);

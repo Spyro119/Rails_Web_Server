@@ -38,7 +38,7 @@ Unfortunately, we couldn't complete dropbox API.
 
   Sendgrid sends a thank you email whenever a user sends a Lead (Contact us form).
 
-  Zendesk simply sends a notification in " https://team2support.zendesk.com/ " for our team to answer as soon as possible to customers whenever they complete the quote form or the contact us form.
+  Zendesk simply sends a notification in " https://rocketelevators6984support.zendesk.com/ " for our team to answer as soon as possible to customers whenever they complete the quote form or the contact us form.
 
   IBM watson tells the admin information about the database (How many quotes there are, how many elevators per buildings per customers, 
 how many elevators are not in service, how many contact requests and how many batteries are deployed across how many cities).

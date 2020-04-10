@@ -102,7 +102,7 @@ class InterventionsController < ApplicationController
 
     respond_to do |format|
       if @intervention.save
-        format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
+        format.html { redirect_to new_intervention_path, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
         
         if @intervention.employee_id? && @intervention.elevator_id?

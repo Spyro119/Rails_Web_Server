@@ -53,7 +53,7 @@ def create_ticket(user_name, company_name, email, phone_number, department, proj
     #{message}"
     },  
     :priority => 'urgent',
-    :type => 'question',
+    :type => "question",
     requester: {"name": email}) 
 end
 
@@ -75,7 +75,7 @@ end
         A quote has been sent. The customer is reachable at email #{email} and requests our #{service_type} service with a total of #{elevNum} elevator(s). Total price is estimated at #{price}$
         You can find the quote #{quote_id} directly in the admin section of rocket elevator's website."},
         :priority => "normal",
-        :type => 'task',
+        :type => "task",
         requester: {"name": email}) 
        
       end
@@ -98,7 +98,7 @@ def create_intervention_ticket(intervention, customer, customer_company, buildin
       Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
       his battery # #{battery}, column # #{column}, elevator # #{elevator}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
       :priority => "normal",
-      :type => 'problem',
+      :type => "problem",
       requester: {"name": requester}) 
     end
   
@@ -119,7 +119,7 @@ def create_ticket2(intervention, customer, customer_company, building, battery, 
       Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
       his battery # #{battery}, column # #{column}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
       :priority => "normal",
-      :type => 'problem',
+      :type => "problem",
       requester: {"name": requester}) 
     end 
 
@@ -140,7 +140,7 @@ def create_ticket3(intervention, customer, customer_company, building, battery, 
       Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
       his battery # #{battery}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
       :priority => "normal",
-      :type => 'problem',
+      :type => "problem",
       requester: {"name": requester}) 
     end
 
@@ -160,7 +160,7 @@ def create_ticket4(intervention, customer, customer_company, building, employee,
       Customer #{customer} request helps for #{customer_company} at his building # #{building}.
       #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
       :priority => "normal",
-      :type => 'problem',
+      :type => "problem",
       requester: {"name": requester}) 
   end
 
@@ -183,7 +183,7 @@ def create_ticket5(intervention, customer, customer_company, building, battery, 
         Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
         his battery # #{battery}, column # #{column}, elevator # #{elevator}. An employee has not yet been attached to this request."},
         :priority => "normal",
-        :type => 'problem',
+        :type => "problem",
         requester: {"name": requester}) 
       end
 
@@ -204,7 +204,7 @@ def create_ticket6(intervention, customer, customer_company, building, battery, 
           Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
           his battery # #{battery}, column # #{column}. An employee has not yet been attached to this request."},
           :priority => "normal",
-          :type => 'problem',
+          :type => "problem",
           requester: {"name": requester}) 
       end
   
@@ -225,7 +225,7 @@ def create_ticket7(intervention, customer, customer_company, building, battery, 
             Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
             his battery # #{battery}. An employee has not yet been attached to this request."},
             :priority => "normal",
-            :type => 'problem',
+            :type => "problem",
             requester: {"name": requester}) 
         end
 
@@ -246,7 +246,7 @@ def create_ticket8(intervention, customer, customer_company, building, requester
               Customer #{customer} request helps for #{customer_company} at his building # #{building}.
                An employee has not yet been attached to this request."},
               :priority => "normal",
-              :type => 'problem',
+              :type => "problem",
               requester: {"name": requester}) 
     end
 

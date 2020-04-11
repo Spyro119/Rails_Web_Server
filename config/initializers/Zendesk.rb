@@ -81,7 +81,7 @@ end
       end
     
 
-def create_intervention_ticket(intervention, customer, customer_company, building, battery, column, elevator, employee, requester)
+def create_intervention_ticket(intervention, customer, customer_company, building, battery, column, elevator, employee, requester, report)
   @client = ZendeskAPI::Client.new do |config|
     config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
     config.username = ENV["Zendesk_email"]
@@ -96,14 +96,15 @@ def create_intervention_ticket(intervention, customer, customer_company, buildin
   ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
     :comment => { :value =>" 
       Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
-      his battery # #{battery}, column # #{column}, elevator # #{elevator}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
+      his battery # #{battery}, column # #{column}, elevator # #{elevator}. #{employee.firstname} #{employee.lastname} has been affected to this ticket.
+      Message attached : #{report}."},
       :priority => "normal",
       :type => "problem",
       requester: {"name": requester}) 
     end
   
 
-def create_ticket2(intervention, customer, customer_company, building, battery, column, employee, requester)
+def create_ticket2(intervention, customer, customer_company, building, battery, column, employee, requester, report)
   @client = ZendeskAPI::Client.new do |config|
     config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
     config.username = ENV["Zendesk_email"]
@@ -117,14 +118,15 @@ def create_ticket2(intervention, customer, customer_company, building, battery, 
   ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
     :comment => { :value =>" 
       Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
-      his battery # #{battery}, column # #{column}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
+      his battery # #{battery}, column # #{column}. #{employee.firstname} #{employee.lastname} has been affected to this ticket.
+      Message attached : #{report}."},
       :priority => "normal",
       :type => "problem",
       requester: {"name": requester}) 
     end 
 
 
-def create_ticket3(intervention, customer, customer_company, building, battery, employee, requester)
+def create_ticket3(intervention, customer, customer_company, building, battery, employee, requester, report)
   @client = ZendeskAPI::Client.new do |config|
     config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
     config.username = ENV["Zendesk_email"]
@@ -138,13 +140,14 @@ def create_ticket3(intervention, customer, customer_company, building, battery, 
   ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
     :comment => { :value =>" 
       Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
-      his battery # #{battery}. #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
+      his battery # #{battery}. #{employee.firstname} #{employee.lastname} has been affected to this ticket.
+      Message attached : #{report}."},
       :priority => "normal",
       :type => "problem",
       requester: {"name": requester}) 
     end
 
-def create_ticket4(intervention, customer, customer_company, building, employee, requester)
+def create_ticket4(intervention, customer, customer_company, building, employee, requester, report)
   @client = ZendeskAPI::Client.new do |config|
     config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
     config.username = ENV["Zendesk_email"]
@@ -158,7 +161,8 @@ def create_ticket4(intervention, customer, customer_company, building, employee,
   ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
     :comment => { :value =>" 
       Customer #{customer} request helps for #{customer_company} at his building # #{building}.
-      #{employee.firstname} #{employee.lastname} has been affected to this ticket."},
+      #{employee.firstname} #{employee.lastname} has been affected to this ticket.
+      Message attached :#{report}."},
       :priority => "normal",
       :type => "problem",
       requester: {"name": requester}) 
@@ -167,7 +171,7 @@ def create_ticket4(intervention, customer, customer_company, building, employee,
 
 
     
-def create_ticket5(intervention, customer, customer_company, building, battery, column, elevator, requester) 
+def create_ticket5(intervention, customer, customer_company, building, battery, column, elevator, requester, report) 
   @client = ZendeskAPI::Client.new do |config|
     config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
     config.username = ENV["Zendesk_email"]
@@ -181,13 +185,14 @@ def create_ticket5(intervention, customer, customer_company, building, battery, 
     ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
       :comment => { :value =>" 
         Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
-        his battery # #{battery}, column # #{column}, elevator # #{elevator}. An employee has not yet been attached to this request."},
+        his battery # #{battery}, column # #{column}, elevator # #{elevator}. An employee has not yet been attached to this request.
+        Message attached : #{report}. "},
         :priority => "normal",
         :type => "problem",
         requester: {"name": requester}) 
       end
 
-def create_ticket6(intervention, customer, customer_company, building, battery, column, requester)
+def create_ticket6(intervention, customer, customer_company, building, battery, column, requester, report)
       @client = ZendeskAPI::Client.new do |config|
         config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
         config.username = ENV["Zendesk_email"]
@@ -202,13 +207,14 @@ def create_ticket6(intervention, customer, customer_company, building, battery, 
         ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
           :comment => { :value =>" 
           Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
-          his battery # #{battery}, column # #{column}. An employee has not yet been attached to this request."},
+          his battery # #{battery}, column # #{column}. An employee has not yet been attached to this request.
+          Message attached : #{report}."},
           :priority => "normal",
           :type => "problem",
           requester: {"name": requester}) 
       end
   
-def create_ticket7(intervention, customer, customer_company, building, battery, requester)
+def create_ticket7(intervention, customer, customer_company, building, battery, requester, report)
         @client = ZendeskAPI::Client.new do |config|
           config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
           config.username = ENV["Zendesk_email"]
@@ -223,13 +229,14 @@ def create_ticket7(intervention, customer, customer_company, building, battery, 
           ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
             :comment => { :value =>" 
             Customer #{customer} request helps for #{customer_company} at his building # #{building} for 
-            his battery # #{battery}. An employee has not yet been attached to this request."},
+            his battery # #{battery}. An employee has not yet been attached to this request.
+            Message attached : #{report}."},
             :priority => "normal",
             :type => "problem",
             requester: {"name": requester}) 
         end
 
-def create_ticket8(intervention, customer, customer_company, building, requester)
+def create_ticket8(intervention, customer, customer_company, building, requester, report)
           @client = ZendeskAPI::Client.new do |config|
             config.url = "https://rocketelevators6984.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
             config.username = ENV["Zendesk_email"]
@@ -244,7 +251,8 @@ def create_ticket8(intervention, customer, customer_company, building, requester
             ZendeskAPI::Ticket.create!(@client, :subject => " Intervention # #{intervention}", 
               :comment => { :value =>" 
               Customer #{customer} request helps for #{customer_company} at his building # #{building}.
-               An employee has not yet been attached to this request."},
+               An employee has not yet been attached to this request.
+               Message attached: #{report}."},
               :priority => "normal",
               :type => "problem",
               requester: {"name": requester}) 

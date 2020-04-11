@@ -106,28 +106,28 @@ class InterventionsController < ApplicationController
         format.json { render :show, status: :created, location: @intervention }
         
         if @intervention.employee_id? && @intervention.elevator_id?
-          create_intervention_ticket(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+          create_intervention_ticket(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, @employee, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
         
         elsif @intervention.employee_id? && @intervention.column_id?
-          create_ticket2(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+          create_ticket2(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @employee, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
         
         elsif @intervention.employee_id? && @intervention.battery_id? 
-          create_ticket3(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+          create_ticket3(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @employee, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
        
         elsif @intervention.employee_id?
-          create_ticket4(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @employee, current_employee.firstname + " " + current_employee.lastname)
+          create_ticket4(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @employee, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
        
         elsif @intervention.elevator_id?
-          create_ticket5(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, current_employee.firstname + " " + current_employee.lastname)
+          create_ticket5(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, @intervention.elevator_id, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
        
         elsif @intervention.column_id? 
-          create_ticket6(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, current_employee.firstname + " " + current_employee.lastname)
+          create_ticket6(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, @intervention.column_id, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
        
         elsif @intervention.battery_id?
-          create_ticket7(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, current_employee.firstname + " " + current_employee.lastname)
+          create_ticket7(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, @intervention.battery_id, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
        
         else 
-          create_ticket8(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, current_employee.firstname + " " + current_employee.lastname)
+          create_ticket8(@intervention.id, @client.company_contact_full_name, @client.company_name, @intervention.building_id, current_employee.firstname + " " + current_employee.lastname, @intervention.report)
         end
         
       else

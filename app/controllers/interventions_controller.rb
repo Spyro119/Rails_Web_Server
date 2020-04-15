@@ -1,8 +1,9 @@
 class InterventionsController < ApplicationController
+  protect_from_forgery
   before_action :set_intervention, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_employee!
   before_action :authorize_employee, only:
-
+ 
 
   # GET /interventions
   # GET /interventions.json
@@ -24,6 +25,7 @@ class InterventionsController < ApplicationController
     if params[:customer_id].present?
       @building = []
       @building = Customer.find(params[:customer_id]).building
+      # @building = Building.where(id: params[:customer_id])
   else
       @building = Building.all
   end
@@ -38,8 +40,10 @@ class InterventionsController < ApplicationController
 
   def get_battery
     if params[:battery_id].present?
+      params[:batter_id].sanitize
       @battery = []
       @battery = Building.find(params[:battery_id]).battery
+      # @battery = Battery.where(id: params[:battery_id])
   else
       @battery = Battery.all
   end
@@ -56,6 +60,7 @@ class InterventionsController < ApplicationController
     if params[:column_id].present?
       @column = []
       @column = Battery.find(params[:column_id]).column
+      # @column = Column.where(id: params[:column_id])
   else
       @column = Column.all
   end
@@ -72,6 +77,7 @@ class InterventionsController < ApplicationController
     if params[:elevator_id].present?
       @elevator = []
       @elevator = Column.find(params[:elevator_id]).elevator
+      # @elevator = Elevator.where(id: params[:elevator_id])
   else
       @elevator = Elevator.all
   end

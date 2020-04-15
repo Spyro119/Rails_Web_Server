@@ -55,6 +55,10 @@ success: function (response) {
 
   $("#intervention_battery_id").empty();
   $('#intervention_battery_id').addClass("form-control")
+  $("#intervention_column_id").empty();
+  $('#intervention_column_id').addClass("form-control")
+  $("#intervention_elevator_id").empty();
+  $('#intervention_elevator_id').addClass("form-control")
 
 
   $("#intervention_battery_id").append('<option value = "">Select Battery</option>');
@@ -85,6 +89,8 @@ $('#intervention_battery_id').change(function(){
 
     $("#intervention_column_id").empty();
     $('#intervention_column_id').addClass("form-control")
+    $("#intervention_elevator_id").empty();
+    $('#intervention_elevator_id').addClass("form-control")
   
     $("#intervention_column_id").append('<option value="">None</option>');
     for(var i = 0; i < column.length; i++){

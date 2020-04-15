@@ -15,13 +15,7 @@ class CustomersController < ApplicationController
   
     # GET /interventions/new
     def new
-      @intervention = Intervention.new
-      @customers = Customer.all
-      @employees = Employee.all
-      @buildings = Building.all
-      @customer = Customer.first
-  
-       @building = Building.find_by customer_id: @customer.id
+   
     end
   
     def get_drop_down_options

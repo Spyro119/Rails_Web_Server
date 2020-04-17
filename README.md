@@ -1,5 +1,21 @@
 # README
+Week 8 fixes done :
 
+vast majority of fields has been protected from SQL Injection by setting a whitelist to prevent special characters in fields where it is not required and using Application Record sanitization over forms parameters before submit. 
+
+To prevent cross-site scripting, the whitelist do most of the job as special characters are not allowed unless needed but where special characters are needed, rails embeds special characters so "html" doesn't interprete it as code to run.
+To prevent CSRF, rails also has a pre-made function to call in forms controllers : "Protect_from_forgery".  
+
+Log-ins have been secured by using a whitelist already made by Devise (The little line of code "validate: email before submit for instance) and a little password configuration requirements, making it safer for users when creating an account.
+Passwords now requires at least one capital letters, 1 number and 8 characters minimum.
+
+Pictures are now finally fixed, github used to interprete jpeg as CRLF instead of as binary, resulting in picture distortion. 
+
+Devise had a feature to also hashes password and script them, which is enabled, making it safer for users.
+
+The employee sign up page is now unnaccessible by anyone and can only sign up an employee from the admin section of the website (So only another employee can create an employee account -- and eventually, with a temporarily password that the employee will change when first logging in when I'll finish coding this). 
+
+==================================================================================
 To access interventions ticket creation page, you'll first need to log in as an employee in the login/sign up tab of the header.
 Once signed in, a new tab with a welcome message will appear in the headerr, the intervention ticket creation is right there. If a user happened to find the create ticket page, he will be redirect to the employee sign up -- so unless registered as an employee, there's no way somebody else can access this page. 
 

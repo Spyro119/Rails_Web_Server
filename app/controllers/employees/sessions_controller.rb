@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Employees::SessionsController < Devise::SessionsController
+    protect_from_forgery
 
     before_action :authenticate_employee!  # Signs employee in or redirect
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  protect_from_forgery
 
   before_action :authenticate_user!  # Signs user in or redirect
 

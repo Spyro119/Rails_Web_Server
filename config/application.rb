@@ -10,9 +10,9 @@ module RocketElevatorsInformationSystem
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :en
+    config.encoding = "utf-8"
 
     config.action_view.raise_on_missing_translations = false
 

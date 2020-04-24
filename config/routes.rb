@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   
   root "pages#index_one_page_elevator"
   
+  get "pages/Streamer"
   get "pages/index_one_page_elevator"
   get "pages/residential_services"
   get "pages/corporate_services"

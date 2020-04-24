@@ -68,6 +68,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -100,12 +101,19 @@ gem "bootstrap-sass"
 gem "chartkick"
 gem "groupdate"
 gem "jquery-ui-rails"
+gem 'nokogiri'
 # gem figaro
 gem "figaro"
 # gem slack-ruby
 gem 'slack-ruby-bot'
 # gem websocket
 gem 'async-websocket', '~>0.8.0'
+# rspec gems
+gem 'rspec', '~>3.0'
+gem 'rspec-rails'
+gem 'webmock'
+# geolocalisation gem
+gem 'geocoder'
 gem 'twilio-ruby'
 gem 'gmaps4rails'
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'

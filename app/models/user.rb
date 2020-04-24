@@ -5,7 +5,7 @@ class User < ApplicationRecord
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
-    errors.add :password, ' must be at least 8 characters long.'
+    errors.add :password, ' must be at least include 1 capital letter, 1 number and be 8 characters long.'
   end
 
   # Include default devise modules. Others available are:

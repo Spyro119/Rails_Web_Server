@@ -77,12 +77,16 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'shoulda-matchers'
+  gem 'shoulda'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bcrypt-ruby", :require => "bcrypt"
+
 
 gem 'capistrano', '~> 3.10', require: false
 gem 'capistrano-rails', '~> 1.4', require: false

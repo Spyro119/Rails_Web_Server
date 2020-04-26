@@ -1,4 +1,14 @@
 # README
+TDD: 
+
+The TDD method code can be found in the spec folder. The code for the ElevatorMedia::Streamer can be found lib folder.
+My getContent method is the method that fetch html from a webpage to render it. Unfortunately, the method using Net::HTTP gem fetches the entire web body, so a "cut" string method is needed. 
+
+La commande :  bundle exec rspec --format doc 
+My TDD assures that the Net::HTTP method in ElevatorMedia::Streamer.getContent makes the connection with the webage and that it fetches the info and store it in "@abody" variable as an html String. 
+
+My TDD for my models user and Employees mostly validates my params, while my Sendgrid TDD validates the API call connection and the results. 
+==================================================================================================================================
 Week 8 fixes done :
 
 vast majority of fields has been protected from SQL Injection by setting a whitelist to prevent special characters in fields where it is not required and using Application Record sanitization over forms parameters before submit. 

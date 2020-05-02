@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     get "by-month-quotes"
   end
 
+  resources :speakerrecognition do 
+    get 'speakerrecognition' => "speakerrecognition#index"
+  end
+
   resources :interventions do 
     get :get_building, on: :collection
     get :get_battery, on: :collection

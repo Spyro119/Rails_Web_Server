@@ -117,7 +117,7 @@ gem 'rspec', '~>3.0'
 gem 'rspec-rails'
 gem 'webmock'
 # geolocalisation gem
-gem 'geocoder'
+# gem 'geocoder'
 gem 'twilio-ruby'
 gem 'gmaps4rails'
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'

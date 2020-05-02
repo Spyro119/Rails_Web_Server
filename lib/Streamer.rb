@@ -24,6 +24,7 @@ module ElevatorMedia
             end
 
             if status != "200"
+                puts "Status : #{status}, #{message}"
                 return {status: status, message: message}
             end
             

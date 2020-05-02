@@ -10,7 +10,7 @@ class ChartsController < ApplicationController
     # end
 
     # The number of unique requests (QuoteId) grouped by Month (Creation Date)
-    def new_qoutes
+    def new_quotes
         render json: Quote.group_by_month(:created_at).count
     end
     

@@ -10,7 +10,7 @@ RSpec.describe ElevatorMedia::Streamer do
         end
         context 'If error return ' do 
             it 'returns 404 error' do 
-                expect(ElevatorMedia::Streamer.getContent('http://www.google.ca/ss')).to eq(status: "404", message: "Not Found")
+                expect(ElevatorMedia::Streamer.getContent('http://www.google.ca/s')).to eq(status: "400", message: "Bad Request")
             end
         end
         context 'Accesssing time using HTTPS' do 
@@ -26,7 +26,7 @@ RSpec.describe ElevatorMedia::Streamer do
         end
         context ' Spotifiy website ' do
             it 'returns HTML string ' do
-                #Do not work as intended
+                #Do not work as intended q
                 expect(ElevatorMedia::Streamer.getContent('https://open.spotify.com/artist/1XpDYCrUJnvCo9Ez6yeMWh?si=WCgfJB3kTG2hrLhnfo0-6Q')).to be_an_instance_of(String)
             end
         end

@@ -127,3 +127,5 @@ gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'rest-client'
 gem 'ibm_watson', git: 'https://github.com/watson-developer-cloud/ruby-sdk', branch: 'master'
 
+# DevOps gem 
+gem 'newrelic_rpm'

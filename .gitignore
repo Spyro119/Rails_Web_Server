@@ -32,6 +32,7 @@
 # Ignore application configuration
 /config/application.yml
 /config/secrets.yml
+/config/newrelic.yml
 
 
 # /root/Week_API/app/models/elevator.rb

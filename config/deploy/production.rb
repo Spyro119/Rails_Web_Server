@@ -15,7 +15,7 @@ set :rails_env, "development"
 set :bundle_without, "production"
 set :deploy_to, "/home/ubuntu/apps/#{app}"
 set :linked_dirs, %w{tmp/pids tmp/sockets log}
-set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_files, %w{config/database.yml config/application.yml config/newrelic.yml}
 
 # role-based syntax
 # ==================
@@ -67,4 +67,4 @@ role :db,  %w{ubuntu@52.60.164.43}
 #     forward_agent: false,
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
-#   }
+#   } 

@@ -50,9 +50,9 @@ Rails.application.routes.draw do
   root "pages#index_one_page_elevator"
   
   get "pages/Streamer"
-  get "pages/index_one_page_elevator"
-  get "pages/residential_services"
-  get "pages/corporate_services"
+  get "index_one_page_elevator" => "pages/index_one_page_elevator"  
+  get "residential_services" => "pages#residential_services"
+  get "corporate_services" => "pages#corporate_services"
   get "pages/SubmissionForm"
   get "pages/login"
   get "pages/FactForm" => "interventions#new"

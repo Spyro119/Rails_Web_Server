@@ -148,8 +148,6 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-bundler (1.6.0)
       capistrano (~> 3.1)
-    capistrano-passenger (0.2.0)
-      capistrano (~> 3.0)
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -165,7 +163,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    chartkick (3.3.1)
+    chartkick (3.4.0)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -481,7 +479,6 @@ DEPENDENCIES
   byebug
   capistrano (~> 3.10)
   capistrano-bundler (>= 1.1.0)
-  capistrano-passenger
   capistrano-rails (~> 1.4)
   capistrano3-puma
   capybara (>= 2.15)

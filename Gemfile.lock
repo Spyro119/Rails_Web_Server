@@ -300,7 +300,7 @@ GEM
     orm_adapter (0.5.0)
     pg (0.18.4)
     public_suffix (4.0.4)
-    puma (3.12.4)
+    puma (3.12.6)
     racc (1.5.2)
     rack (2.2.2)
     rack-cors (1.1.1)
@@ -510,7 +510,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   pg (~> 0.18.4)
-  puma (~> 3.11)
+  puma (~> 3.12)
   rack-cors (~> 1.1, >= 1.1.1)
   rails (~> 5.2.4, >= 5.2.4.1)
   rails-controller-testing

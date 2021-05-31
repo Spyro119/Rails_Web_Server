@@ -33,12 +33,6 @@ To complete the form, you absolutely need to complete at least those 3 fields : 
 Once Customer's name field is complete, building's field will appear with new values (Customer's building(s)), and every time you complete the building field/battery field/column field, the next field will reappear with new option values depending on the previous fields values. 
 
 Uncompleted fields will return "null" to the database table Interventions, as they're allowed to be null and can be either completed later -- if an employee is assigned, for example -- or just leave them null.
-
-Once submit, this will created a Zendesk ticket to rocketelevators6984.zendesk.com with those infos (The message adapts depending on the fields completed) with the ticket type being "problem" and requester being the current employee submitting the form (or author of the ticket). 
-To log onto Zendesk API => 
-Username : samuelJubinville119@gmail.com
-password : rocketelevators
-
 An intervention tab will contain every intervention Ticket (they are filtered on the ticket type "problem" ).
 
 
